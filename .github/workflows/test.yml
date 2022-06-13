@@ -14,4 +14,4 @@ jobs:
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.repository }}
-          release_id: 1
+          release_id: 69293251
