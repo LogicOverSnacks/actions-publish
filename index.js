@@ -2,8 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-  const owner = core.getInput('owner');
-  const repo = core.getInput('repo');
+  const [owner, repo] = core.getInput('repo').split('/');
   const release_id = core.getInput('release_id');
 
   const api = github.getOctokit(process.env.GITHUB_TOKEN).rest;

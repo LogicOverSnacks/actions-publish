@@ -8864,8 +8864,7 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
 try {
-  const owner = core.getInput('owner');
-  const repo = core.getInput('repo');
+  const [owner, repo] = core.getInput('repo').split('/');
   const release_id = core.getInput('release_id');
 
   const api = github.getOctokit(process.env.GITHUB_TOKEN).rest;

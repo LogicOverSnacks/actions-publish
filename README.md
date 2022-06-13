@@ -23,7 +23,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
         with:
-          owner: ${{ github.repository_owner }}
           repo: ${{ github.repository }}
           release_id: ${{ steps.create_release.outputs.id }}
 ```
