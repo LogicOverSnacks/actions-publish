@@ -1,0 +1,15 @@
+name: 'Publish Release'
+description: 'A GitHub Action to publish a draft release'
+inputs:
+  owner:
+    description: 'The repo owner'
+    required: true
+  repo:
+    description: 'The repo name'
+    required: true
+  release_id:
+    description: 'The ID of the draft release to publish'
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
