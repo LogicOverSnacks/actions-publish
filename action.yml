@@ -1,4 +1,4 @@
-name: 'Publish Release'
+name: 'Publish Github Release'
 description: 'A GitHub Action to publish a draft release'
 inputs:
   repo:
