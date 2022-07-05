@@ -8865,12 +8865,21 @@ const github = __nccwpck_require__(5438);
 
 try {
   const [owner, repo] = core.getInput('repo').split('/');
-  const release_id = core.getInput('release_id');
 
   const api = github.getOctokit(process.env.GITHUB_TOKEN).rest;
-  api.repos.updateRelease({ owner, repo, release_id, draft: false })
-    .then(() => console.log(`Published release for '${owner}/${repo}' with id '${release_id}'`))
-    .catch(error => core.setFailed(error.message));
+
+  api.repos.listReleases({ owner: owner, repo: repo }).then(releases => {
+    const drafts = releases.data
+      .filter(({ draft }) => draft)
+      .sort((a, b) => new Date(a.created_at) < new Date(b.created_at));
+
+    if (!drafts.length)
+      throw new Error('No drafts found.');
+
+    api.repos.updateRelease({ owner, repo, release_id: drafts[0].id, draft: false })
+      .then(({ data }) => console.log(`Published release for '${owner}/${repo}' with id '${data.id}', url: '${data.html_url}'`))
+      .catch(error => core.setFailed(error.message));
+  });
 } catch (error) {
   core.setFailed(error.message);
 }

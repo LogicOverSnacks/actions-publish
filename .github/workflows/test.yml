@@ -13,4 +13,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           repo: ${{ github.repository }}
-          release_id: 69293251

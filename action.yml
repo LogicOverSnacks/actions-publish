@@ -1,11 +1,8 @@
 name: 'Publish Github Release'
-description: 'A GitHub Action to publish a draft release'
+description: 'A GitHub Action to publish the latest draft release'
 inputs:
   repo:
     description: 'The repo name e.g. "owner/repo"'
-    required: true
-  release_id:
-    description: 'The ID of the draft release to publish'
     required: true
 runs:
   using: 'node16'

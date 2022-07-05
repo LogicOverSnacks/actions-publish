@@ -1,6 +1,6 @@
 # actions-publish
 
-A Github action to publish a release.
+A Github action to publish the latest draft release.
 
 ## Usage
 
@@ -18,11 +18,10 @@ jobs:
           tag_name: test
           release_name: Test
           draft: true
-      - name: Publish release
+      - name: Publish latest draft release
         uses: logicoversnacks/actions-publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
         with:
           repo: ${{ github.repository }}
-          release_id: ${{ steps.create_release.outputs.id }}
 ```
